@@ -75,6 +75,9 @@ mvn -Pjib verify jib:dockerBuild
 
 ## Rsocket
 
+RSocket is a new messaging protocol that’s designed to solve some common microservice communication challenges. With RSocket you get a flexible protocol that works over TCP or WebSockets. This means you can do binary messages without conversion. You get modern controls like multiplexing, back-pressure, resumption, and routing, and you get multiple messaging modes including fire-and-forget, request-response, and streaming. RSocket is fully reactive too, so it’s ideal for your high-throughput microservice applications
+
+### Rsocket Example Request With Rsc
 
 ```sh
 rsc --stream --route=graphql --dataMimeType="application/graphql+json" --data='{"query":"subscription { postAdded { id, title, content } }" }' --debug tcp://localhost:8079 --authBearer ${TOKEN} 
