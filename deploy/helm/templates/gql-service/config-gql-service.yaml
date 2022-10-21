@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-gql-service-config
+  labels:
+  {{- include "spring-gql-service.labels" . | nindent 4 }}
+data:
+  SPRING_PROFILES_ACTIVE: {{ .Values.spring.profiles.active }}
+  application.yml: |-
+    spring:
+      config:
+        activate:
+          on-profile: {{ .Values.spring.profiles.active }}
+      data:
+        mongodb:
+          uri: mongodb://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@mongodb:27017/demo
+    security:
+      authentication:
+        token:
+          base64-secret: ${TOKEN_SECRET}
+          token-validity-in-seconds: {{ .Values.token.tokenValidityInSeconds| quote }}
+      cipher:
+        base64-secret: ${CIPHER_SECRET}
+    server:
+      port: {{ .Values.springGraphqlService.containerPorts.http | quote}}
+    dummy:
+      message: this is new dummy message

@@ -1,0 +1,2 @@
+org.springframework.nativex.type.NativeConfiguration=\
+  io.github.susimsek.springcloudkubernetessamples.graphql.hint.GraphQlNativeHints

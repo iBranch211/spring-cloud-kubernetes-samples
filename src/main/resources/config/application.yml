@@ -1,0 +1,36 @@
+spring:
+  rsocket:
+    server:
+      transport: tcp
+  graphql:
+    rsocket:
+      mapping: graphql
+  main:
+    allow-bean-definition-overriding: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    restart:
+      enabled: true
+    shutdown:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+      show-details: always
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+cors:
+  allowed-origins: http://localhost:3000, http://localhost:8080
+  allowed-methods: GET, PUT, POST, PATCH, DELETE, OPTIONS
+  allowed-headers: Origin, Accept, X-Requested-With, Authorization, Cache-Control, Content-Type
+  exposed-headers: Location
+  allow-credentials: true
+  max-age: 3600
